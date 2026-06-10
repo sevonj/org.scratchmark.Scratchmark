@@ -25,5 +25,5 @@ modules:
       sources:
           - type: "git"
             url: "https://github.com/sevonj/scratchmark.git"
-            tag: "v1.8.0"
+            tag: "v1.9.0"
           - "generated-sources.json"
