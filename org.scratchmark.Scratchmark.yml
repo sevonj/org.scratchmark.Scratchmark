@@ -1,38 +1,39 @@
 # Derived from: https://github.com/sevonj/scratchmark/blob/master/build-aux/org.scratchmark.Scratchmark.yml
-id: "org.scratchmark.Scratchmark"
-runtime: "org.gnome.Platform"
-runtime-version: "50"
-sdk: "org.gnome.Sdk"
+id: org.scratchmark.Scratchmark
+runtime: org.gnome.Platform
+runtime-version: 50
+sdk: org.gnome.Sdk
 sdk-extensions:
-    - "org.freedesktop.Sdk.Extension.rust-stable"
-command: "scratchmark"
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: scratchmark
 finish-args:
-    - "--share=ipc"
-    - "--socket=fallback-x11"
-    - "--socket=wayland"
-    - "--device=dri"
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
 build-options:
-    append-path: "/usr/lib/sdk/rust-stable/bin"
-    env:
-      CARGO_HOME: "/run/build/scratchmark/cargo"
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    CARGO_HOME: /run/build/scratchmark/cargo
 modules:
-    - name: "libspelling"
-      buildsystem: "meson"
-      config-opts:
-        - "-Ddocs=false"
-      sources:
-        - type: "archive"
-          url: "https://download.gnome.org/sources/libspelling/0.4/libspelling-0.4.10.tar.xz"
-          sha256: "56e3f01a3a18b575beea4c34349f99cdaba316e1f7c271b1231f7bcf5d9af73b"
 
-    - name: "scratchmark"
-      builddir: true
-      buildsystem: "meson"
-      config-opts:
-        - "-Doffline=true"
-        - "-Dbuildtype=release"
-      sources:
-        - type: "git"
-          url: "https://github.com/sevonj/scratchmark.git"
-          tag: "v1.9.0"
-        - "generated-sources.json"
+  - name: libspelling
+    buildsystem: meson
+    config-opts:
+      - -Ddocs=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libspelling/0.4/libspelling-0.4.10.tar.xz
+        sha256: 56e3f01a3a18b575beea4c34349f99cdaba316e1f7c271b1231f7bcf5d9af73b
+
+  - name: scratchmark
+    builddir: true
+    buildsystem: meson
+    config-opts:
+      - -Doffline=true
+      - -Dbuildtype=release
+    sources:
+      - type: git
+        url: https://github.com/sevonj/scratchmark.git
+        tag: v1.9.0
+      - generated-sources.json
