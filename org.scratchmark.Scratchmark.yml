@@ -20,6 +20,7 @@ modules:
   - name: libspelling
     buildsystem: meson
     config-opts:
+      - -Dintrospection=disabled
       - -Ddocs=false
     sources:
       - type: archive
