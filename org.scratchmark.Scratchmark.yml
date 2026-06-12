@@ -11,6 +11,9 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
+cleanup:
+ - /include
+ - /lib/pkgconfig
 build-options:
   append-path: /usr/lib/sdk/rust-stable/bin
   env:
@@ -41,4 +44,5 @@ modules:
       - type: git
         url: https://github.com/sevonj/scratchmark.git
         tag: v1.9.0
+        commit: eb4f411159932b6b21dd0934af3ff42a3f6ed02c
       - generated-sources.json
